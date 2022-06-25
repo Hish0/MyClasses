@@ -1,0 +1,143 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.header {
+  display: flex;
+  width: 95%;
+  margin: auto;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+.header a {
+  text-decoration: none;
+  border: 1px solid black;
+  padding: 5px;
+  background-color: #eee;
+  font-size: 1.3rem;
+}
+.containor {
+  width: 85%;
+  margin: auto;
+  background: #eee;
+  height: 100vh;
+  overflow: hidden;
+}
+.courses-inputs form,
+.student-inputs form {
+  margin: 50px auto;
+  height: 500px;
+  width: 370px;
+  background-color: #dadada;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.courses-inputs form {
+  height: 400px;
+}
+
+/* .student-inputs form .in-el-size {
+  height: calc((500px / 2) - 65px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}*/
+.courses-inputs form .btns,
+.student-inputs form .btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  height: 35px;
+}
+.courses-inputs form input,
+.student-inputs form select,
+.student-inputs form input {
+  width: 300px;
+  height: 35px;
+  padding: 0 10px;
+}
+#course {
+  height: 75px;
+  padding: 10px;
+}
+.courses-inputs form .btn,
+.student-inputs form .btn {
+  width: 150px;
+  height: 35px;
+}
+/*student display data*/
+
+.stu-show-title {
+  text-align: center;
+  margin: 25px 0;
+}
+.table-wrap {
+  height: 500px;
+  overflow-y: auto;
+}
+.student-table {
+  width: 95%;
+  margin: 20px auto;
+  text-align: center;
+  border-bottom: 1px solid #111;
+  border-top: 1px solid #111;
+}
+.student-table thead {
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0px;
+  z-index: 2;
+  background-color: rgb(45, 45, 45);
+  color: #fff;
+}
+
+.student-table thead th {
+  padding: 10px;
+  font-size: 1.2rem;
+}
+
+.student-table tbody td {
+  padding: 10px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #111;
+}
+
+.btns-student-table {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  padding: 25px 5px;
+}
+.btn-link {
+  border: 1px solid;
+  padding: 10px;
+  background-color: #4873f6;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-ed-del {
+  border: 1px solid;
+  outline: none;
+  padding: 8px;
+  background-color: #8f8f8f;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.btn-ed-del:first-child {
+  background-color: #b84444;
+}
+.btn-ed-del:nth-child(2) {
+  background-color: #c58531;
+}

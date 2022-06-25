@@ -1,0 +1,43 @@
+CREATE DATABASE timelecture;
+
+CREATE TABLE students(                                                      
+ stu_id int(11) NOT NULL,                                                                
+ stu_name varchar(45) NOT NULL,         
+ stu_phone varchar(11) NOT NULL,        
+ stu_colloge varchar(45) NOT NULL,      
+ stu_dep varchar(45) NOT NULL,          
+ num_completed_hourse int(11) NOT NULL,                                                  
+ PRIMARY KEY (stu_id)                                                                    
+);     
+CREATE TABLE teacher(                                                      
+ tec_id int(11) NOT NULL,                                                                
+ tec_name varchar(45) NOT NULL,         
+ week_hours int(11) NOT NULL,        
+ aca_deg varchar(45) NOT NULL,      
+ edu_deg varchar(45) NOT NULL, 
+ PRIMARY KEY (tec_id)                                                                           
+);     
+CREATE TABLE courses(
+  code_course varchar(45) NOT NULL,
+  course_name varchar(45) NOT NULL,
+  prequist varchar(45) NOT NULL,
+  t_hourse int(11) NOT NULL,
+  w_hourse int(11) NOT NULL,
+  PRIMARY KEY (code_course),
+  UNIQUE KEY uq_c_name (course_name)
+);     
+
+CREATE TABLE complet_course(
+    stu_id int(11),
+    code_course varchar(45),
+    course_hourse int,
+    FOREIGN KEY(stu_id) REFERENCES students(stu_id) ON DELETE CASCADE,
+    FOREIGN KEY(code_course) REFERENCES courses(code_course) ON DELETE CASCADE
+);    
+CREATE TABLE tec_course(
+    tec_id int(11),
+    code_course varchar(45),
+
+    FOREIGN KEY(tec_id ) REFERENCES students(tec_id ) ON DELETE CASCADE,
+    FOREIGN KEY(code_course) REFERENCES courses(code_course) ON DELETE CASCADE
+);                                         
