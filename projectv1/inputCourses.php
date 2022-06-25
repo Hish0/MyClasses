@@ -55,7 +55,7 @@
           </div>
           <div class="btns">
             <button name="submit" value="submit" class="btn">ADD</button>
-            <button type="button" class="btn"><a href="displayCourse.php"> Show Courses</a></button>
+            <button type="button" class="btn"><a href="displayCourses.php"> Show Courses</a></button>
           </div>
         </form>
       </div>
