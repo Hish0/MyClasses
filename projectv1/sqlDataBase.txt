@@ -1,5 +1,12 @@
 CREATE DATABASE timelecture;
 
+create table users(
+ u_id int(11) primary key auto_increment,
+ u_name varchar(45) not null unique,
+ access_pass int not null,
+ u_password varchar(100) not null
+);
+
 CREATE TABLE students(                                                      
  stu_id int(11) NOT NULL,                                                                
  stu_name varchar(45) NOT NULL,         
