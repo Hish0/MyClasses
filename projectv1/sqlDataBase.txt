@@ -62,3 +62,4 @@ CREATE TABLE tec_course(
                            
 ALTER TABLE courses CHANGE t_hourse c_hourse INT(11) NOT NULL; 
 ALTER TABLE courses CHANGE w_hourse l_hourse INT(11) NOT NULL; 
+ ALTER TABLE courses ADD lvl int default 0;
