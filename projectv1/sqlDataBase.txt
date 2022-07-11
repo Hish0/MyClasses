@@ -7,6 +7,12 @@ create table users(
  u_password varchar(100) not null
 );
 
+create table users(
+ u_id int(11) primary key auto_increment,
+ u_name varchar(45) not null unique,
+ access_pass int not null,
+ u_password varchar(100) not null
+);
 CREATE TABLE students(                                                      
  stu_id int(11) NOT NULL,                                                                
  stu_name varchar(45) NOT NULL,         
@@ -33,7 +39,6 @@ CREATE TABLE courses(
   PRIMARY KEY (code_course),
   UNIQUE KEY uq_c_name (course_name)
 );     
-
 create table classrooms(
   cr_id int(11) primary key,
   cr_capacity int(11) not null,
@@ -41,7 +46,6 @@ create table classrooms(
   cr_dep varchar(45) not null,
   cr_type varchar(45) not null
   );
-
 CREATE TABLE complet_course(
     stu_id int(11),
     code_course varchar(45),
@@ -52,10 +56,9 @@ CREATE TABLE complet_course(
 CREATE TABLE tec_course(
     tec_id int(11),
     code_course varchar(45),
-
     FOREIGN KEY(tec_id ) REFERENCES students(tec_id ) ON DELETE CASCADE,
     FOREIGN KEY(code_course) REFERENCES courses(code_course) ON DELETE CASCADE
-);                                         
+);              
                            
 ALTER TABLE courses CHANGE t_hourse c_hourse INT(11) NOT NULL; 
 ALTER TABLE courses CHANGE w_hourse l_hourse INT(11) NOT NULL; 

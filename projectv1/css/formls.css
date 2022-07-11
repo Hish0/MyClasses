@@ -1,0 +1,106 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  height: 100vh;
+}
+form {
+  border: 1px solid black;
+  width: 350px;
+  min-height: 400px;
+  padding: 15px;
+  margin: 5% auto 0;
+  position: relative;
+  box-shadow: 0 8px 20px 1px #606060;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-form {
+  min-height: 350px;
+}
+form .goto-btn {
+  position: absolute;
+  right: 15px;
+  background-color: #2b2b2b;
+  padding: 5px 10px;
+  border: none;
+  color: #fff;
+}
+form .title {
+  text-align: center;
+  background-color: #eee;
+  margin-top: 35px;
+  padding: 15px;
+}
+input {
+  display: block;
+  margin-bottom: 5px;
+  width: 100%;
+  padding: 10px 10px;
+}
+#btnSubmit {
+  width: 100%;
+  background: rgb(48, 48, 48);
+  color: #fff;
+  outline: none;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.errorMsg {
+  color: red;
+  margin-bottom: 5px;
+}
+
+input[type="radio"] {
+  padding: 0;
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+.acsses-contanior {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.data-submited {
+  margin: 25px auto;
+  width: 350px;
+  height: 250px;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+.data-submited img {
+  width: 75px;
+  height: 75px;
+}
+.submit-msg {
+  font-size: 1.2rem;
+  padding-left: 10px;
+  padding-right: 10px;
+  /* color: #05ff00; */
+  text-align: center;
+  color: #4bae4f;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+.err {
+  color: #f44336;
+}
+
+.none {
+  display: none;
+}

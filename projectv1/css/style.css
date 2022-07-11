@@ -2,21 +2,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-.header {
-  display: flex;
-  width: 95%;
-  margin: auto;
-  justify-content: space-evenly;
-  margin-bottom: 5px;
-}
-.header a {
+a {
   text-decoration: none;
-  border: 1px solid black;
-  padding: 5px;
-  background-color: #eee;
-  font-size: 1.3rem;
+  color: #000;
 }
 .containor {
   width: 85%;
@@ -25,41 +15,82 @@
   height: 100vh;
   overflow: hidden;
 }
-.courses-inputs form,
-.student-inputs form {
+.header {
+  display: flex;
+  width: 100%;
+  margin: auto;
+  justify-content: center;
+  margin-bottom: 5px;
+  background-color: #a9a9a9;
+  height: 60px;
+  align-items: center;
+}
+.header .user-title {
+  display: flex;
+  width: 35%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.header .user-title h2 {
+  color: #2b2b2b;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+.header .user-title a {
+  background-color: #2b2b2b;
+  /* font-weight: 400; */
+  color: #fff;
+}
+.header .user-title img {
+  width: 45px;
+  border-radius: 50%;
+}
+.header .menu-bar {
+  display: flex;
+  width: 65%;
+  margin: auto;
+  justify-content: space-evenly;
+}
+.header a {
+  color: #000;
+  border: 1px solid black;
+  padding: 5px;
+  background-color: #eee;
+  font-size: 1.3rem;
+}
+
+.inputs form {
   margin: 50px auto;
-  height: 500px;
+  height: 550px;
   width: 370px;
   background-color: #dadada;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 .courses-inputs form {
   height: 400px;
 }
+.inputs form label {
+  align-self: flex-start;
+}
 
-/* .student-inputs form .in-el-size {
-  height: calc((500px / 2) - 65px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}*/
-.courses-inputs form .btns,
-.student-inputs form .btns {
+.inputs form .btns {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+  width: 100%;
   height: 35px;
 }
-.courses-inputs form input,
-.student-inputs form select,
-.student-inputs form input {
-  width: 300px;
+
+.inputs form select,
+.inputs form input {
+  width: 100%;
   height: 35px;
   padding: 0 10px;
 }
@@ -67,12 +98,16 @@
   height: 75px;
   padding: 10px;
 }
-.courses-inputs form .btn,
-.student-inputs form .btn {
-  width: 150px;
+#courses-title {
+  align-self: flex-start;
+}
+
+.inputs form .btn {
+  width: 50%;
   height: 35px;
 }
-/*student display data*/
+
+/* display data*/
 
 .stu-show-title {
   text-align: center;
@@ -125,9 +160,60 @@
   cursor: pointer;
   border-radius: 5px;
 }
+/*//////////////////*/
+.card-courses {
+  width: 450px;
+  min-height: 175px;
+  background-color: #b0aeae;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+.card-courses .info-card {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  color: rgb(41, 41, 41);
+}
+.card-courses .courses-table {
+  width: 100%;
+  text-align: center;
+  border: 1px solid black;
+}
+.card-courses .courses-table thead {
+  background-color: rgb(45, 45, 45);
+  color: #fff;
+  font-size: 1.2rem;
+}
+.card-courses .courses-table th {
+  padding: 10px;
+}
+.card-courses .courses-table td {
+  padding: 10px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #111;
+}
+/* ////////////////////////////// */
+.custom-btn {
+  background-color: #4cb821;
+  font-size: 1.1rem;
+  padding: 7px;
+}
+
 .btn-ed-del {
   border: 1px solid;
-  outline: none;
+  display: inline-block;
+  width: fit-content;
   padding: 8px;
   background-color: #8f8f8f;
   color: #fff;
@@ -140,4 +226,20 @@
 }
 .btn-ed-del:nth-child(2) {
   background-color: #c58531;
+}
+#close-card-courses {
+  align-self: flex-end;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.none {
+  display: none;
+}
+/* table time */
+
+.time-table h2{
+  text-align: center;
+}
+.time-table table td {
+  text-align: center;
 }
