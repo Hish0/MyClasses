@@ -48,3 +48,6 @@ CREATE TABLE tec_course(
     FOREIGN KEY(tec_id ) REFERENCES students(tec_id ) ON DELETE CASCADE,
     FOREIGN KEY(code_course) REFERENCES courses(code_course) ON DELETE CASCADE
 );                                         
+                           
+ALTER TABLE courses CHANGE t_hourse c_hourse INT(11) NOT NULL; 
+ALTER TABLE courses CHANGE w_hourse l_hourse INT(11) NOT NULL; 
