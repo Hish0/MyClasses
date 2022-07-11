@@ -34,6 +34,14 @@ CREATE TABLE courses(
   UNIQUE KEY uq_c_name (course_name)
 );     
 
+create table classrooms(
+  cr_id int(11) primary key,
+  cr_capacity int(11) not null,
+  cr_location varchar(45),
+  cr_dep varchar(45) not null,
+  cr_type varchar(45) not null
+  );
+
 CREATE TABLE complet_course(
     stu_id int(11),
     code_course varchar(45),
