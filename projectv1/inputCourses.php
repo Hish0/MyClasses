@@ -1,24 +1,17 @@
 <?php
-    // require_once "src/config.php";
-    // $conn = new mysqli($sn, $un, $pw, $nameDB);
-    // $data = [];
-    // if ($conn->connect_error) {
-    //   echo"feild connction";
-    // }
-    // else {
-    //   $sql = "SELECT code_course,course_name FROM courses";
-    //   $result = $conn->query($sql);
-    //   if ($result->num_rows > 0) {
-    //     // output data of each row
-    //     for ($i=0; $i < $result->num_rows; $i++) { 
-    //       $data[$i] = $result->fetch_assoc();
-    //     }
-    //   } else {
-    //     echo "0 results";
-    //   }
-    // }
-    // $conn->close();
-
+  include_once "src/session.php";
+require_once "src/config.php";
+  require_once "src/coursesProssces.php";
+  $show='none';
+  $info = [
+    'id'=>'',
+    'course_name'=>'',
+    'lvl'=>'',
+    'pre'=>'',
+    'ch'=>'',
+    'lh'=>''
+  ];
+  include_once "src/editData.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,25 +20,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>courses</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css"/>
   </head>
-  <body>
-  <div class="header">
-  <a href="displayStudent.php">Student</a>
-    <a href="displayTeacher.php">Teacher</a>
-    <a href="displayCourses.php">Courses</a></div>
+  <body> 
     <div class="containor">
-      <div class="courses-inputs">
-        <form action="src/coursesProssces.php" method="post">
+  <?php include "main/header.php"; ?>
+      <div class="inputs">
+        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
           <h2>Courses INFO</h2>
           <!-- <div class="name-inputs in-el-size"> -->
-            <input type="text" name="ccode" placeholder="Course Code" required/>
-            <input type="text" name="cname" placeholder="Course Name" required/>
-            <input type="text" name="cprequist" placeholder="Prequist" required/>
+          <label for="ccode">Course Code</label>
+            <input type="text" name="ccode" id="ccode" placeholder="Course Code"
+            value="<?php echo trim($info['id']) ?>" required/>
+          <label for="cname">Course Name</label>
+            <input type="text" name="cname" id="cname" placeholder="Course Name"
+            value="<?php echo trim($info['course_name']) ?>" required/>
+          <label for="lvl">Course level</label>
+            <input type="text" name="lvl" id="lvl" placeholder="Course level"
+            value="<?php echo trim($info['lvl']) ?>" required/>
+          <label for="cprequist">Prequist</label>
+            <input type="text" name="cprequist" id="cprequist" placeholder="Prequist"
+            value="<?php echo trim($info['pre']) ?>" required/>
           <!-- </div> -->
           <!-- <div class="unvirsty-inputs in-el-size"> -->
-            <input type="text" name="cthours" placeholder="theoretic Hours" required/>
-            <input type="text" name="cwhours" placeholder="Working Hours" required/>
+          <label for="cthours">Cridet Hours</label>
+            <input type="text" name="cthours" id="cthours" placeholder="Cridet Hours"
+            value="<?php echo trim($info['ch']) ?>" required/>
+          <label for="cwhours">Lab Hours</label>  
+            <input type="text" name="cwhours" id="cwhours" placeholder="Lab Hours"
+            value="<?php echo trim($info['lh']) ?>" required/>
 
           <!-- </div> -->
           <div>
@@ -54,10 +57,14 @@
             </p>
           </div>
           <div class="btns">
-            <button name="submit" value="submit" class="btn">ADD</button>
+            <!-- <button name="submit" value="submit" class="btn">ADD</button> -->
+            <button name="submit" value="<?php echo $valMainBtn; ?>" class="btn"><?php echo $mainBtn; ?></button>
             <button type="button" class="btn"><a href="displayCourses.php"> Show Courses</a></button>
           </div>
         </form>
+      </div>
+      <div class="btns-student-table">
+        <a class="btn-link <?php echo $show ?>" href="inputCourses.php">ADD Courses</a>
       </div>
     </div>
     <script src=""></script>
