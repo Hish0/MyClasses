@@ -70,4 +70,3 @@ CREATE TABLE `tec_course` (
   CONSTRAINT `completed_courses_ibfk_1` FOREIGN KEY (`stu_id`) REFERENCES `students` (`stu_id`) ON DELETE CASCADE,
   CONSTRAINT `completed_courses_ibfk_2` FOREIGN KEY (`code_course`) REFERENCES `courses` (`code_course`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4
-

@@ -12,7 +12,8 @@ a {
   width: 85%;
   margin: auto;
   background: #eee;
-  height: 100vh;
+  min-height: 780px;
+  height: auto;
   overflow: hidden;
 }
 .header {
@@ -233,7 +234,7 @@ a {
   cursor: pointer;
 }
 .none {
-  display: none;
+  display: none!important;
 }
 /* table time */
 
@@ -242,4 +243,17 @@ a {
 }
 .time-table table td {
   text-align: center;
+}
+
+.show-table-lecture{
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  padding-top: 100px;
+}
+
+.tame-table-lecture{
+  width: 600px;
+  text-align: center;
+  margin: auto;
 }
