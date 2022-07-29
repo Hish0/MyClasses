@@ -16,7 +16,7 @@ if(isset($_GET['id']))
     }
     $sql = "DELETE FROM $tabname WHERE $keyname = '$keyval'";
     $conn->query($sql);
-    header("location:../$loc");
+    header("location:../".$loc);
     $conn->close();
 }
 

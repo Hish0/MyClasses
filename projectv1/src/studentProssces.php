@@ -2,6 +2,7 @@
     require_once "config.php";
     //submit التحقق من طلب الارسال عن طريق فحص قيمة
     if (isset($_POST['submit'])) {
+        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
         //المتغيرات الخاصة ببيانات الطالب
         $fullname = trim($_POST['fname'])." ".trim($_POST['mname'])." ".trim($_POST['lname']);
         $stu_id = trim($_POST['stu_id']);
@@ -18,36 +19,46 @@
         }
         //اذا نجح الاتصال
         else{
-            if (strtolower($_POST['submit']) === 'add') {
-                //جملة اضافة بيانات الطالب
-                $student_query = "INSERT INTO students (stu_id,stu_name,stu_phone, stu_colloge,stu_dep)
-                                VALUES ('$stu_id','$fullname','$phone','$colloge','$dep')";
-                //تحقق اذا تم تنفيذ جملة الاستعلام الخاصة بأضافة الطالب
-                if ($conn->query($student_query) === TRUE) {
-                    insertCourses($courses,$stu_id,$conn);            
-        
-                } else {
-                    echo "Error: " . $student_query . "<br>" . $conn->error;
+            $conn->begin_transaction();
+            try {
+                if (strtolower($_POST['submit']) === 'add') {
+                    //جملة اضافة بيانات الطالب
+                    $student_query = "INSERT INTO students (stu_id,stu_name,stu_phone, stu_colloge,stu_dep)
+                                    VALUES ('$stu_id','$fullname','$phone','$colloge','$dep')";
+                    //تحقق اذا تم تنفيذ جملة الاستعلام الخاصة بأضافة الطالب
+                    if ($conn->query($student_query) === TRUE) {
+                        insertCourses($courses,$stu_id,$conn);            
+            
+                    } else {
+                        echo "Error: " . $student_query . "<br>" . $conn->error;
+                    }
                 }
-            }
-            if (strtolower($_POST['submit']) === 'edit') {
-                // stu_id,stu_name,stu_phone, stu_colloge,stu_dep
-                // ('$stu_id','$fullname','$phone','$colloge','$dep')
-                $editStu_query = "UPDATE students 
-                SET stu_name='$fullname',stu_phone='$phone',stu_colloge='$colloge',stu_dep='$dep' 
-                WHERE stu_id='$stu_id'";
-                if ($conn->query($editStu_query) === TRUE) {
-                
-                $delCourse_query = "DELETE FROM completed_courses WHERE stu_id = '$stu_id'";
-                
-                if ($conn->query($delCourse_query) === TRUE) {
-                    insertCourses($courses,$stu_id,$conn);
-                } else {
-                    echo "Error: " . $delCourse_query . "<br>" . $conn->error;
+                if (strtolower($_POST['submit']) === 'edit') {
+                    // stu_id,stu_name,stu_phone, stu_colloge,stu_dep
+                    // ('$stu_id','$fullname','$phone','$colloge','$dep')
+                    $editStu_query = "UPDATE students 
+                    SET stu_name='$fullname',stu_phone='$phone',stu_colloge='$colloge',stu_dep='$dep' 
+                    WHERE stu_id='$stu_id'";
+                    if ($conn->query($editStu_query) === TRUE) {
+                    
+                    $delCourse_query = "DELETE FROM completed_courses WHERE stu_id = '$stu_id'";
+                    
+                    if ($conn->query($delCourse_query) === TRUE) {
+                        insertCourses($courses,$stu_id,$conn);
+                    } else {
+                        echo "Error: " . $delCourse_query . "<br>" . $conn->error;
+                    }
+                    } else {
+                    echo "Error: " . $editTec_query . "<br>" . $conn->error;
+                    }
                 }
-                } else {
-                echo "Error: " . $editTec_query . "<br>" . $conn->error;
-                }
+                $conn->commit();
+            } catch(mysqli_sql_exception $exception){
+                echo 'Transaction Failed!!';
+                $conn->rollback();
+                $conn=null;
+                echo'<br>';
+                echo $exception->getMessage();
             }
         }
 
